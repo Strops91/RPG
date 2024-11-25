@@ -39,6 +39,11 @@ create table if not exists lutador(
 
 create table if not exists batalha(
     id int not null AUTO_INCREMENT Primary key,
+    nome varchar(255),
+    bonus_vida int,
+    bonus_escudo int ,
+    bonus_poderfisico int ,
+    bonus_poderhabilidade int,
     lutador1_id int,
     lutador2_id int,
     vencedor_id int,

@@ -75,6 +75,7 @@ public class Arquetipo {
 		return "Arquetipo [id=" + id + ", nome=" + nome + ", bonusVida=" + bonusVida + ", bonusEscudo=" + bonusEscudo
 				+ ", bonusFisico=" + bonusFisico + ", bonusHabilidade=" + bonusHabilidade + "]";
 	}
+}
 
 //	public Arquetipo(String nome2, int bonusHabilidade2, int bonusHabilidade3, int bonusHabilidade4, int bonusHabilidade5) {
 //		Arquetipo arquetipo = new Arquetipo(nome, bonusHabilidade, bonusHabilidade, bonusHabilidade, bonusHabilidade);
@@ -96,4 +97,4 @@ public class Arquetipo {
 //	}
 //
 
-}
+

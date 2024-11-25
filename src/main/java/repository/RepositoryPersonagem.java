@@ -3,8 +3,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 //import java.util.ArrayList;
 //import java.util.List;
+import java.util.List;
 
 import database.DatabaseConnection;
 import entidades.Personagem;
@@ -46,39 +48,39 @@ public class RepositoryPersonagem {
         }
     }
 
-//    // Método para buscar todas as raças no banco de dados
-//   public List<Arquetipo> buscarTodasRacas() {
-//        // Lista para armazenar as raças encontradas
-//        List<Arquetipo> racas = new ArrayList<>();
-//        // Comando SQL para selecionar todas as raças
-//        String sql = "SELECT * FROM arquetipo";
-//
-//        // Tenta conectar ao banco de dados e executar o comando SQL
-//        try (Connection conexao = DatabaseConnection.conectar();
-//             PreparedStatement stmt = conexao.prepareStatement(sql);
-//             ResultSet rs = stmt.executeQuery()) {
-//
-//            // Itera sobre os resultados e cria objetos Raca para cada linha
-//            while (rs.next()) {
-//            	Arquetipo arquetipo = new Arquetipo();
-//            	arquetipo.setId(rs.getInt("id"));
-//            	arquetipo.setNome(rs.getString("nome"));
-//            	arquetipo.setBonusVida(rs.getInt("bonus_vida"));
-//            	arquetipo.setBonusEscudo(rs.getInt("bonus_escudo"));
-//            	arquetipo.setBonusFisico(rs.getInt("bonus_poderfisico"));
-//            	arquetipo.setBonusHabilidade(rs.getInt("bonus_poderhabilidade"));
-//                // Adiciona a raça à lista
-//            	arquetipo.add(arquetipo);
-//            }
-//
-//        } catch (SQLException e) {
-//            // Em caso de erro, imprime o stack trace para facilitar a identificação do problema
-//            e.printStackTrace();
-//        }
-//
-//        // Retorna a lista de raças encontradas
-//        return arquetipo;
-//    }
+    // Método para buscar todas as raças no banco de dados
+   public List<Personagem> buscarTodasPersonagem() {
+        // Lista para armazenar as raças encontradas
+        List<Personagem> personagens = new ArrayList<>();
+        // Comando SQL para selecionar todas as raças
+        String sql = "SELECT * FROM personagem";
+
+        // Tenta conectar ao banco de dados e executar o comando SQL
+        try (Connection conexao = DatabaseConnection.conectar();
+             PreparedStatement stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            // Itera sobre os resultados e cria objetos Raca para cada linha
+            while (rs.next()) {
+            	Personagem persongaem = new Personagem();
+            	persongaem.setId(rs.getInt("id"));
+            	persongaem.setNome(rs.getString("nome"));
+            	persongaem.setBonusVida(rs.getInt("bonus_vida"));
+            	persongaem.setBonusEscudo(rs.getInt("bonus_escudo"));
+            	persongaem.setBonusFisico(rs.getInt("bonus_poderfisico"));
+            	persongaem.setBonusHabilidade(rs.getInt("bonus_poderhabilidade"));
+                // Adiciona a raça à lista
+            	personagens.add(persongaem);
+            }
+
+        } catch (SQLException e) {
+            // Em caso de erro, imprime o stack trace para facilitar a identificação do problema
+            e.printStackTrace();
+        }
+
+        // Retorna a lista de raças encontradas
+        return personagens;
+    }
 
     // Método para buscar uma raça específica pelo ID
     public Personagem buscarPersonagemPorId(int id) {
@@ -115,10 +117,7 @@ public class RepositoryPersonagem {
         return personagem;
     }
 
-	public char[] buscarTodosPersonagens() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 }

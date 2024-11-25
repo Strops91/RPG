@@ -22,11 +22,11 @@ public class RepositoryRaca {
              PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             // Define os valores dos parâmetros na instrução SQL
-            stmt.setString(1, raca.getNome());
-            stmt.setInt(2, raca.getBonusVida());
-            stmt.setInt(3, raca.getBonusEscudo());
-            stmt.setInt(4, raca.getBonusFisico());
-            stmt.setInt(5, raca.getBonusHabilidade());
+			stmt.setString(1, raca.getNome());
+			stmt.setInt(2, raca.getBonusVida());
+			stmt.setInt(3, raca.getBonusEscudo());
+			stmt.setInt(4, raca.getBonusFisico());
+			stmt.setInt(5, raca.getBonusHabilidade());
             // Executa a inserção no banco de dados
             stmt.executeUpdate();
 

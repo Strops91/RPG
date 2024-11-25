@@ -2,29 +2,58 @@ package entidades;
 
 public class Batalha {
 
-	private int id;
+    private Personagem personagem1;
+    private Personagem personagem2;
+
+    public Batalha(Personagem personagem1, Personagem personagem2) {
+        this.personagem1 = personagem1;
+        this.personagem2 = personagem2;
+    }
+
+    public void iniciar() {
+        System.out.println("Iniciando batalha entre " + personagem1.getNome() + " e " + personagem2.getNome());
+
+        while (personagem1.getBonusVida() > 0 && personagem2.getBonusVida() > 0) {
+            // Personagem 1 ataca
+            int dano1 = Math.max(0, personagem1.getBonusFisico() - personagem2.getBonusEscudo());
+            personagem2.setBonusVida(personagem2.getBonusVida() - dano1);
+            System.out.println(personagem1.getNome() + " causou " + dano1 + " de dano a " + personagem2.getNome());
+            if (personagem2.getBonusVida() <= 0) {
+                System.out.println(personagem2.getNome() + " foi derrotado!");
+                break;
+            }
+
+            // Personagem 2 ataca
+            int dano2 = Math.max(0, personagem2.getBonusFisico() - personagem1.getBonusEscudo());
+            personagem1.setBonusVida(personagem1.getBonusVida() - dano2);
+            System.out.println(personagem2.getNome() + " causou " + dano2 + " de dano a " + personagem1.getNome());
+            if (personagem1.getBonusVida() <= 0) {
+                System.out.println(personagem1.getNome() + " foi derrotado!");
+                break;
+            }
+        }
+
+        System.out.println("Batalha encerrada!");
+    }
+
+    private int id;
 	private String nome;
-	private int vida;
-	private int escudo;
-	private int fisico;
-	private int habilidade;
+	private int bonusVida;
+	private int bonusEscudo;
+	private int bonusFisico;
+	private int bonusHabilidade;
 
 	public Batalha() {
 		super();
 	}
 
-	public Batalha(String nome, int vida, int escudo, int fisico, int habilidade) {
+	public Batalha(String nome, int bonusVida, int bonusEscudo, int bonusFisico, int bonusHabilidade) {
 		super();
 		this.nome = nome;
-		this.vida = vida;
-		this.escudo = escudo;
-		this.fisico = fisico;
-		this.habilidade = habilidade;
-	}
-
-
-	public Batalha(Personagem legolas, Personagem grom) {
-		// TODO Auto-generated constructor stub
+		this.bonusVida = bonusVida;
+		this.bonusEscudo = bonusEscudo;
+		this.bonusFisico = bonusFisico;
+		this.bonusHabilidade = bonusHabilidade;
 	}
 
 	public int getId() {
@@ -43,67 +72,41 @@ public class Batalha {
 		this.nome = nome;
 	}
 
-	public int getVida() {
-		return vida;
+	public int getBonusVida() {
+		return bonusVida;
 	}
 
-	public void setVida(int vida) {
-		this.vida = vida;
+	public void setBonusVida(int bonusVida) {
+		this.bonusVida = bonusVida;
 	}
 
-	public int getEscudo() {
-		return escudo;
+	public int getBonusEscudo() {
+		return bonusEscudo;
 	}
 
-	public void setEscudo(int escudo) {
-		this.escudo = escudo;
+	public void setBonusEscudo(int bonusEscudo) {
+		this.bonusEscudo = bonusEscudo;
 	}
 
-	public int getFisico() {
-		return fisico;
+	public int getBonusFisico() {
+		return bonusFisico;
 	}
 
-	public void setFisico(int fisico) {
-		this.fisico = fisico;
+	public void setBonusFisico(int bonusFisico) {
+		this.bonusFisico = bonusFisico;
 	}
 
-	public int getHabilidade() {
-		return habilidade;
+	public int getBonusHabilidade() {
+		return bonusHabilidade;
 	}
 
-	public void setHabilidade(int habilidade) {
-		this.habilidade = habilidade;
+	public void setBonusHabilidade(int bonusHabilidade) {
+		this.bonusHabilidade = bonusHabilidade;
 	}
 
 	@Override
 	public String toString() {
-		return "Batalha [id=" + id + ", nome=" + nome + ", bonusVida=" + vida + ", bonusEscudo=" + escudo
-				+ ", bonusFisico=" + fisico + ", bonusHabilidade=" + habilidade + "]";
+		return "Arquetipo [id=" + id + ", nome=" + nome + ", bonusVida=" + bonusVida + ", bonusEscudo=" + bonusEscudo
+				+ ", bonusFisico=" + bonusFisico + ", bonusHabilidade=" + bonusHabilidade + "]";
 	}
-
-	public void iniciar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-//	public Arquetipo(String nome2, int bonusHabilidade2, int bonusHabilidade3, int bonusHabilidade4, int bonusHabilidade5) {
-//		Arquetipo arquetipo = new Arquetipo(nome, bonusHabilidade, bonusHabilidade, bonusHabilidade, bonusHabilidade);
-//		this.nome = nome;
-//		this.bonusVida = bonusVida;
-//		this.bonusEscudo = bonusEscudo;
-//		this.bonusFisico = bonusFisico;
-//		this.bonusHabilidade = bonusHabilidade;
-//	}
-//
-//	public static Arquetipo criandoObjetoArquetipo(String string, int i, int j, int k, int l) {
-//		Arquetipo arquetipo = new Arquetipo(string, l, l, l, l);
-//		arquetipo.nome = nome;
-//		arquetipo.bonusVida = bonusVida;
-//		arquetipo.bonusEscudo = bonusEscudo;
-//		arquetipo.bonusFisico = bonusFisico;
-//		arquetipo.bonusHabilidade = bonusHabilidade;
-//		return arquetipo;
-//	}
-//
-
 }
